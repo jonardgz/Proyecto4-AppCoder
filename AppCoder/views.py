@@ -4,13 +4,17 @@ from django.shortcuts import render
 from AppCoder.models import Curso, Entregable
 
 
+def inicio(request):
+    return render(request, 'index.html')
+
+
 def curso(request):
     curso1 = Curso(nombre="Python", camada=31095)
     curso1.save()
     contexto = {
         'curso': curso1
     }
-    return render(request, 'Curso.html', contexto)
+    return render(request, 'AppCoder/Curso.html', contexto)
 
 
 def entregable(request):
@@ -25,4 +29,4 @@ def entregable(request):
         'entregable': entregable1
     }
 
-    return render(request, 'Entregable.html', contexto)
+    return render(request, 'AppCoder/Entregable.html', contexto)
