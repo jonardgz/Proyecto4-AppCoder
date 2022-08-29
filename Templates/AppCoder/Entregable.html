@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Entregable</title>
-</head>
-<body>
+{% extends 'index.html' %}
 
-El entregable fue creado satisfactoriamente.<br>
-Nombre: {{ entregable.nombre }}<br>
-Fecha: {{ entregable.fecha_de_entrega }}<br>
+{% block title %}
+    Entregables
+{% endblock %}
 
-</body>
-</html>
+{% block inicio %}
+    El entregable fue creado satisfactoriamente.<br>
+    Nombre: {{ entregable.nombre }}<br>
+    Fecha: {{ entregable.fecha_de_entrega }}<br>
+{% endblock %}
