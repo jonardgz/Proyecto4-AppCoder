@@ -1,7 +1,7 @@
 import datetime
-
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from AppCoder.models import Curso, Entregable
+from AppCoder.forms import CursoForm, busquedaCamadaForm
 
 
 def inicio(request):
@@ -30,3 +30,39 @@ def entregable(request):
     }
 
     return render(request, 'AppCoder/Entregable.html', contexto)
+
+
+def cursoFormulario(request):
+    if request.method == 'POST':
+        MiFormulario = CursoForm(request.POST)
+        if MiFormulario.is_valid():
+            data = MiFormulario.cleaned_data
+            curso1 = Curso(nombre=data.get('nombre'), camada=data.get('camada'))
+            curso1.save()
+            return redirect('AppCodercursoFormulario')
+
+    cursos = Curso.objects.all()
+
+    contexto = {
+        'form': CursoForm(),
+        'cursos': cursos
+    }
+    return render(request, "AppCoder/cursoFormulario.html", contexto)
+
+
+def busquedaCamada(request):
+    contexto = {
+        'form': busquedaCamadaForm(),
+    }
+    return render(request, 'AppCoder/busquedaCamada.html', contexto)
+
+
+def busquedaCamada_post(request):
+    camada = request.GET.get('camada')
+
+    cursos = Curso.objects.filter(camada__icontains=camada)
+    contexto = {
+        'cursos': cursos
+    }
+
+    return render(request, "AppCoder/cursoFormulario.html", contexto)
