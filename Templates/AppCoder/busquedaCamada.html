@@ -6,9 +6,9 @@
 
 {% block inicio %}
 
-    <form action="/AppCoder/busquedaCamada_post" method="GET">
+    <form action="/AppCoder/busquedaCamadaPost" method="GET">
         {% csrf_token %}
-        {{ form.as_p }}
+            {{ form.as_p }}
         <input type="submit" value="Buscar">
     </form>
 

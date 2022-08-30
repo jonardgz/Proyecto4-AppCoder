@@ -65,4 +65,5 @@ def busquedaCamada_post(request):
         'cursos': cursos
     }
 
-    return render(request, "AppCoder/cursoFormulario.html", contexto)
+    return render(request, "AppCoder/cursoFiltrado.html", contexto)
+

@@ -8,4 +8,5 @@ urlpatterns = [
     path('cursoFormulario/', cursoFormulario, name='AppCodercursoFormulario'),
     path('busquedaCamada/', busquedaCamada, name='AppCoderBusquedaCamada'),
     path('busquedaCamadaPost/', busquedaCamada_post, name='AppCoderBusquedaCamadaPost'),
+
 ]
