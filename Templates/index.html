@@ -27,6 +27,10 @@
         <!-- Navigation-->
         {% include 'Base/navigation.html' %}
 
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+
         {% block inicio %}
             Esta es la pagina de inicio
         {% endblock %}
