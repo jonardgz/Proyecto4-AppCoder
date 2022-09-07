@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 from AppCoder.models import Curso, Entregable
 from AppCoder.forms import CursoForm, busquedaCamadaForm
@@ -15,7 +17,7 @@ def inicio(request):
     return render(request, 'index.html')
 
 
-class CursoList(ListView):
+class CursoList(LoginRequiredMixin, ListView):
     model = Curso
     template_name = 'AppCoder/Curso.html'
 
@@ -70,6 +72,7 @@ def eliminar_Curso(request, camada):
     return redirect('AppCoderCurso')
 
 
+@login_required
 def entregable(request):
     entregable1 = Entregable(
         nombre="Jona",
